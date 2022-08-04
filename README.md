@@ -32,9 +32,9 @@ sudo apt install -y conky;
 2. Clone conky-config
 ```bash
 git clone https://github.com/jungsbro/conky-config.git ~/github/conky-config;
-cp -f ~/github/conky-config/conkyrc ~;
-cp -f ~/github/conky-config/.conky/conky.desktop /etc/xdg/autostart/;
-cp -f ~/github/conky-config/.conky/conky.sh /usr/bin/;
+cp -f ~/github/conky-config/.conkyrc ~;
+sudo cp -f ~/github/conky-config/.conky/conky.desktop /etc/xdg/autostart/;
+sudo cp -f ~/github/conky-config/.conky/conky.sh /usr/bin/;
 ```
 <br>
 
