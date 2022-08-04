@@ -1,216 +1,82 @@
-# ==============================================================================
-# set to yes if you want Conky to be forked in the background ------------------
-background yes
-# ------------------------------------------------------------------------------
+conky.config = {
 
-# ------------------------------------------------------------------------------
-short_units yes             ######
+background = true,
+use_xft = true,
+font = '123:size=8',
+xftalpha = 0.1,
+update_interval = 0.5,
+total_run_times = 0,
+own_window = true,
+own_window_type = 'normal',
+own_window_transparent = true,
+own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+double_buffer = true,
+minimum_width = 250,
+minimum_height = 5,
+maximum_width = 400,
+draw_shades = false,
+draw_outline = false,
+draw_borders = false,
+draw_graph_borders = false,
+default_color = 'gray',
+default_shade_color = 'red',
+default_outline_color = 'green',
+alignment = 'top_right',
+gap_x = 10,
+gap_y = 10,
+no_buffers = true,
+uppercase = false,
+cpu_avg_samples = 2,
+net_avg_samples = 1,
+override_utf8_locale = false,
+use_spacer = 'right'
 
-cpu_avg_samples 2
-net_avg_samples 1
+}
 
-out_to_console no             ######
-# ------------------------------------------------------------------------------
+conky.text = [[
 
-# X font when Xft is disabled, you can pick one with program xfontsel ----------
-#font 7x12
-#font 6x10
-#font 7x13
-font 8x12             ######
-#font 7x12
-# ------------------------------------------------------------------------------
+${font Arial:size=20}${color #0040FF}RPI${color #00FFFF}LINUX
 
-# Use Xft? ---------------------------------------------------------------------
-use_xft yes
-#xftfont 123:size=8
-# ------------------------------------------------------------------------------
-
-# Xft font when Xft is enabled -------------------------------------------------
-#xftfont gentium:size=12
-#xftfont DejaVu Sans:size=10
-xftfont DejaVu Sans:bold:size=9             ######
-#xftfont DejaVu Sans:size=9
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-override_utf8_locale no
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Create own window instead of using desktop (required in nautilus, pcmanfm and rox desktops)
-# own_window no
-# own_window_type desktop
-# xfce4, lxde ------------------------------------------------------------------
-# own_window yes
-# own_window_type normal
-# gnome3 -----------------------------------------------------------------------
-# own_window yes
-# own_window_type desktop
-# mate -------------------------------------------------------------------------
-own_window yes
-own_window_type override
-# total ------------------------------------------------------------------------
-own_window_transparent yes
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-# ------------------------------------------------------------------------------
-
-# Text alpha when using Xft ----------------------------------------------------
-xftalpha 0.1
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-#on_bottom no             ######
-# ------------------------------------------------------------------------------
-
-# Update interval in seconds ---------------------------------------------------
-update_interval 0.5
-# ------------------------------------------------------------------------------
-
-# Use double buffering (reduces flicker, may not work for everyone) ------------
-double_buffer yes
-# ------------------------------------------------------------------------------
-
-# Minimum size of text area ----------------------------------------------------
-minimum_size 250 5
-maximum_width 400
-# ------------------------------------------------------------------------------
-
-# Draw shades? -----------------------------------------------------------------
-draw_shades yes
-# ------------------------------------------------------------------------------
-
-# Draw outlines? ---------------------------------------------------------------
-draw_outline yes
-# ------------------------------------------------------------------------------
-
-# Draw borders around text -----------------------------------------------------
-draw_borders no
-# ------------------------------------------------------------------------------
-
-# Draw borders around graph ----------------------------------------------------
-draw_graph_borders no
-# ------------------------------------------------------------------------------
-
-# Stippled borders? ------------------------------------------------------------
-stippled_borders 0             ######
-# ------------------------------------------------------------------------------
-
-# border margins ---------------------------------------------------------------
-#border_margin 10
-# ------------------------------------------------------------------------------
-
-# border width -----------------------------------------------------------------
-border_width 2             ######
-# ------------------------------------------------------------------------------
-
-# Default colors and also border colors ----------------------------------------
-default_color gray
-default_shade_color black
-default_outline_color black
-
-color1 FFFFF0       # color Ivory
-#color2 696969      # color DimGray
-color2 gray         # color DimGray
-color3 ffa54f       # color Tan1
-color4 ee9a49       # color Tan2
-color5 2f4f4f       # color DarkSlateGray
-# ------------------------------------------------------------------------------
-
-# Text alignment, other possible values are commented --------------------------
-# alignment top_left
-alignment top_right
-#alignment bottom_left
-#alignment bottom_right
-# ------------------------------------------------------------------------------
-
-# Gap between borders of screen and text ---------------------------------------
-gap_x 10
-gap_y 10
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Add spaces to keep things from moving about?  This only affects certain objects.
-use_spacer right
-# ------------------------------------------------------------------------------
-
-# Subtract file system buffers from used memory? -------------------------------
-no_buffers yes
-# ------------------------------------------------------------------------------
-
-# if_up_strictness link:  up | link | address ----------------------------------
-if_up_strictness address             ######
-# ------------------------------------------------------------------------------
-
-# set to yes if you want all text to be in uppercase ---------------------------
-uppercase no
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-total_run_times 0
-# ------------------------------------------------------------------------------
-# ==============================================================================
-
-
-# ==============================================================================
-TEXT
-${font Arial:size=20}${color1}${exec cat /etc/issue.net}
 ${voffset -90}
-${color2}
+${color #505050}
 ${font}
-
-# SYSTEM -----------------------------------------------------------------------
-${font Arial:bold:size=10}${color3}SYSTEM ${color5} ${hr 2}
-$font${color2}$sysname $kernel $alignr $machine
-Frequency $alignr${freq_g cpu0}Ghz
-User ${alignr}$alignc${exec whoami} @ $nodename
-Uptime $alignr${uptime}
+${font Arial:bold:size=10}${color #00AAFF}SYSTEM ${color #0000AA} ${hr 2}
+$font${color #505050}$sysname $kernel $alignr $machine
+Frequency ${color #AAAAAA}$alignr${freq_g cpu0}Ghz${color #505050}
+Uptime ${color #AAAAAA}$alignr${uptime}${color #505050}
 File System $alignr${fs_type}
 
-# CPU --------------------------------------------------------------------------
-${font Arial:bold:size=10}${color3}CPU ${color5}${hr 2}
-# $font${color2}Temp: $alignr ${exec /opt/vc/bin/vcgencmd measure_temp | cut -c6-9} C
-$font${color2}CPU  ${cpu cpu}% ${cpubar cpu}
-# $font${color2}CPU1  ${cpu cpu1}% ${cpubar cpu1}
-# CPU2  ${cpu cpu2}% ${cpubar cpu2}
-# CPU3  ${cpu cpu3}% ${cpubar cpu3}
-# CPU4  ${cpu cpu4}% ${cpubar cpu4}
-${cpugraph DimGray DarkSlateGray} $color
+${font Arial:bold:size=10}${color #00AAFF}CPU ${color #0000AA}${hr 2}
+$font${color #505050}Temp: $alignr ${color #AAAAAA}${exec sh -c "/usr/bin/vcgencmd measure_temp 2>/dev/null | cut -c6-9"} C
+$font${color #505050}CPU1  ${color #AAAAAA}${cpu cpu1}%${color #505050} ${cpubar cpu1}
+CPU2  ${color #AAAAAA}${cpu cpu2}%${color #505050} ${cpubar cpu2}
+CPU3  ${color #AAAAAA}${cpu cpu3}%${color #505050} ${cpubar cpu3}
+CPU4  ${color #AAAAAA}${cpu cpu4}%${color #505050} ${cpubar cpu4}
+${cpugraph #AAAAAA #0000AA} $color
 
-# MEMORY -----------------------------------------------------------------------
-${font Arial:bold:size=10}${color3}MEMORY ${color5}${hr 2}
-$font${color2}MEM $alignc $mem / $memmax $alignr $memperc%
+${font Arial:bold:size=10}${color #00AAFF}MEMORY ${color #0000AA}${hr 2}
+$font${color #505050}MEM $alignc ${color #AAAAAA}$mem${color #505050} / $memmax $alignr $memperc%
 $membar
-$font${color2}SWAP $alignc $swap / $swapmax $alignr $swapperc%
+$font${color #505050}SWAP $alignc ${color #AAAAAA}$swap${color #505050} / $swapmax $alignr $swapperc%
 $swapbar
 
-# HDD --------------------------------------------------------------------------
-${font Arial:bold:size=10}${color3}HDD ${color5}${hr 2}
-$font${color2}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${fs_bar /}
-$font${color2}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${font Arial:bold:size=10}${color #00AAFF}HDD ${color #0000AA}${hr 2}
+$font${color #505050}/home $alignc ${color #AAAAAA}${fs_used /home} / ${fs_size /home}${color #505050} $alignr ${fs_free_perc /home}%
 ${fs_bar /home}
 
-# TOP PROCESS ------------------------------------------------------------------
-${font Arial:bold:size=10}${color3}TOP PROCESSES ${color5}${hr 2}
-${color2}$font${top_mem name 2}${alignr}${top mem 2} %
+${font Arial:bold:size=10}${color #00AAFF}TOP PROCESSES ${color #0000AA}${hr 2}
+${color #505050}$font${top_mem name 2}${alignr}${top mem 2} %
 $font${top_mem name 3}${alignr}${top mem 3} %
 $font${top_mem name 4}${alignr}${top mem 4} %
 $font${top_mem name 5}${alignr}${top mem 5} %
 
-# NETWORK ----------------------------------------------------------------------
-${font Arial:bold:size=10}${color4}NETWORK ${color5}${hr 2}
-$font${color2}IP on enp0s3 $alignr ${addr enp0s3}
+${font Arial:bold:size=10}${color #00AAFF}NETWORK ${color #0000AA}${hr 2}
+$font${color #505050}IP on eth0 $alignr ${color #AAAAAA}${addr eth0}
 
-Up $alignr ${upspeed enp0s3} kb/s
-Down $alignr ${downspeed enp0s3} kb/s
+${color #505050}Down $alignr ${color #AAAAAA}${downspeed eth0}/s
+${color #505050}Up $alignr ${color #AAAAAA}${upspeed eth0}/s
 
-Uploaded: $alignr  ${totalup enp0s3}
-Downloaded: $alignr  ${totaldown enp0s3}
-#$font${color2}IP on wlan0 $alignr ${addr wlan0}
+${color #505050}Downloaded: $alignr  ${color #AAAAAA}${totaldown eth0}
+${color #505050}Uploaded: $alignr  ${color #AAAAAA}${totalup eth0}
 
-#Up $alignr ${upspeed wlan0} kb/s
-#Down $alignr ${downspeed wlan0} kb/s
-
-#Uploaded: $alignr  ${totalup wlan0}
-#Downloaded: $alignr  ${totaldown wlan0}
-# ==============================================================================
+]]
