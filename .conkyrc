@@ -64,19 +64,17 @@ use_spacer = 'right'
 }
 
 conky.text = [[
--- -----------------------------------------------------------------------------
 ${font Arial:size=20}${color #0040FF}RPI${color #00FFFF}LINUX
 
 ${voffset -90}
 ${color #505050}
 ${font}
--- SYSTEM ----------------------------------------------------------------------
 ${font Arial:bold:size=10}${color #00AAFF}SYSTEM ${color #0000AA} ${hr 2}
 $font${color #505050}$sysname $kernel $alignr $machine
 Frequency ${color #AAAAAA}$alignr${freq_g cpu0}Ghz${color #505050}
 Uptime ${color #AAAAAA}$alignr${uptime}${color #505050}
 File System $alignr${fs_type}
--- CPU -------------------------------------------------------------------------
+
 ${font Arial:bold:size=10}${color #00AAFF}CPU ${color #0000AA}${hr 2}
 $font${color #505050}Temp: $alignr ${color #AAAAAA}${exec sh -c "/usr/bin/vcgencmd measure_temp 2>/dev/null | cut -c6-9"} C
 $font${color #505050}CPU1  ${color #AAAAAA}${cpu cpu1}%${color #505050} ${cpubar cpu1}
@@ -84,23 +82,23 @@ CPU2  ${color #AAAAAA}${cpu cpu2}%${color #505050} ${cpubar cpu2}
 CPU3  ${color #AAAAAA}${cpu cpu3}%${color #505050} ${cpubar cpu3}
 CPU4  ${color #AAAAAA}${cpu cpu4}%${color #505050} ${cpubar cpu4}
 ${cpugraph #AAAAAA #0000AA} $color
--- MEMORY ----------------------------------------------------------------------
+
 ${font Arial:bold:size=10}${color #00AAFF}MEMORY ${color #0000AA}${hr 2}
 $font${color #505050}MEM $alignc ${color #AAAAAA}$mem${color #505050} / $memmax $alignr $memperc%
 $membar
 $font${color #505050}SWAP $alignc ${color #AAAAAA}$swap${color #505050} / $swapmax $alignr $swapperc%
 $swapbar
--- HDD -------------------------------------------------------------------------
+
 ${font Arial:bold:size=10}${color #00AAFF}HDD ${color #0000AA}${hr 2}
 $font${color #505050}/home $alignc ${color #AAAAAA}${fs_used /home} / ${fs_size /home}${color #505050} $alignr ${fs_free_perc /home}%
 ${fs_bar /home}
--- TOP PROCESS -----------------------------------------------------------------
+
 ${font Arial:bold:size=10}${color #00AAFF}TOP PROCESSES ${color #0000AA}${hr 2}
 ${color #505050}$font${top_mem name 2}${alignr}${top mem 2} %
 $font${top_mem name 3}${alignr}${top mem 3} %
 $font${top_mem name 4}${alignr}${top mem 4} %
 $font${top_mem name 5}${alignr}${top mem 5} %
--- NETWORK ---------------------------------------------------------------------
+
 ${font Arial:bold:size=10}${color #00AAFF}NETWORK ${color #0000AA}${hr 2}
 $font${color #505050}IP on eth0 $alignr ${color #AAAAAA}${addr eth0}
 
@@ -109,5 +107,5 @@ ${color #505050}Up $alignr ${color #AAAAAA}${upspeed eth0}/s
 
 ${color #505050}Downloaded: $alignr  ${color #AAAAAA}${totaldown eth0}
 ${color #505050}Uploaded: $alignr  ${color #AAAAAA}${totalup eth0}
--- -----------------------------------------------------------------------------
+
 ]]
