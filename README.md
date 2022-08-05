@@ -1,5 +1,5 @@
 # **conky-config**
-<br>
+<br><br>
 
 # **FolderTree**
 ```bash
@@ -25,6 +25,7 @@ README.md                       #
 # **Installation**
 1. Install conky
 ```bash
+sudo apt update;
 sudo apt install -y conky;
 ```
 <br>
